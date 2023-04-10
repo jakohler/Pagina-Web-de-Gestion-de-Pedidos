@@ -1,0 +1,27 @@
+{% extends "ProyectoWebApp/base.html" %}    <!-- heredando html base -->
+
+{% load static %}
+
+{% load crispy_forms_tags %}    <!-- cargando paquetes crispy -->
+
+{% block content %}
+
+<form action="" method="post" style="color: white;">
+    {% csrf_token %}
+    <div style="width: 75%; margin: auto;">
+
+        {{forms|crispy}}
+        
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <button type="submit" class="btn btn-sm btn-succes" style="background-color: cornsilk; color: black;">Iniciar sesion</button>
+    </div>
+</form>
+
+{% endblock %}
